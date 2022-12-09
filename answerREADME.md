@@ -5,13 +5,14 @@ For å sette opp en egen fork med banch protection må du slik at:
     Kode kan merges til main branch ved å lage en Pull request med minst en godkjenning
     Kode kan merges til main bare når feature branchen som pull requesten er basert på, er verifisert av GitHub Actions.
     
-Må du:i
+Må du:
 
-Gåt til din fork av dette repoet.
-Gå til Settings/Branches og Se etter seksjonen "Branch Protection Rules".
-Velg Add
-Velg main Som branch
-Velg require a pull request before merging
+Gå til din fork av dette repoet.
+Gå til Settings og så Branches.
+Se etter seksjonen "Branch Protection Rules", ligger som alternativ nummer to for meg.
+Trykk på "Add"
+Skriv inn "main" som branch name
+Huk av "require a pull request before merging" for å tvinge at man må lage en pull request.
 Velg Require status check to pass before merging
 Velg Do not allow bypassing the above settings
 I søkefeltet skriv inn teksten build som skal la deg velge "GitHub Actions".
