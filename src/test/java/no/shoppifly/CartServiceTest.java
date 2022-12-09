@@ -16,8 +16,9 @@ public class CartServiceTest {
         String orderId = service.checkout(theCart);
         assertNotNull(orderId);
 
-        // Jim; This must be wrong, right? Shouldn't the cart be removed after checkout
-        assertEquals(100, service.getAllsCarts().size());
+        // Jim; This must be wrong, right? Shouldn't the cart be removed after
+        //Set from 100 to 0
+        assertEquals(0, service.getAllsCarts().size());
     }
 
 }
