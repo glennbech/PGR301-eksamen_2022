@@ -12,8 +12,9 @@ Gå til Settings og så Branches.
 Se etter seksjonen "Branch Protection Rules", ligger som alternativ nummer to for meg.
 Trykk på "Add"
 Skriv inn "main" som branch name
-Huk av "require a pull request before merging" for å tvinge at man må lage en pull request.
-Velg Require status check to pass before merging
-Velg Do not allow bypassing the above settings
-I søkefeltet skriv inn teksten build som skal la deg velge "GitHub Actions".
+Huk av 
+    "require a pull request before merging" for å tvinge at man må lage en pull request.
+    "Require status check to pass before merging"
+    "Do not allow bypassing the above settings"
+Finn søkefeltet og skriv inn "build" og sjekk at "GitHub Actions" kommer opp ved siden når du trykker enter.
 Nå kan vi ikke Merge en pull request inn i Main uten at status sjekken er i orden. Det betyr at vår Workflow har kjørt OK.
