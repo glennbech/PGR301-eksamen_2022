@@ -1,6 +1,6 @@
 Oppgave 3:
 
-For å sette opp en egen fork med banch protection må du slik at:
+For å sette opp en egen fork med banch protection med følgende krav:
     Ingen kan pushe kode direkte på main branch
     Kode kan merges til main branch ved å lage en Pull request med minst en godkjenning
     Kode kan merges til main bare når feature branchen som pull requesten er basert på, er verifisert av GitHub Actions.
@@ -13,7 +13,8 @@ Se etter seksjonen "Branch Protection Rules", ligger som alternativ nummer to fo
 Trykk på "Add"
 Skriv inn "main" som branch name
 Huk av 
-    "require a pull request before merging" for å tvinge at man må lage en pull request.
+    "Require a pull request before merging" for å tvinge at man må lage en pull request.
+        "Require approvals" (Her er default 1, men det endres som ønskelig)
     "Require status check to pass before merging"
     "Do not allow bypassing the above settings"
 Finn søkefeltet og skriv inn "build" og sjekk at "GitHub Actions" kommer opp ved siden når du trykker enter.
