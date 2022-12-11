@@ -8,6 +8,7 @@ import java.util.*;
 class NaiveCartImpl implements CartService {
 
     private final Map<String, Cart> shoppingCarts = new HashMap<>();
+    public int totalCartsCheckedout = 0;
 
     @Override
     public Cart getCart(String id) {
@@ -26,11 +27,12 @@ class NaiveCartImpl implements CartService {
     @Override
     public String checkout(Cart cart) {
         shoppingCarts.remove(cart.getId());
+        totalCartsCheckedout ++;
         return UUID.randomUUID().toString();
     }
 
     @Override
-    public List<String> getAllsCarts() {
+    public List<String> getAllCarts() {
         return new ArrayList<>(shoppingCarts.keySet());
     }
 
@@ -40,5 +42,9 @@ class NaiveCartImpl implements CartService {
                 .flatMap(c -> c.getItems().stream()
                         .map(i -> i.getUnitPrice() * i.getQty()))
                 .reduce(0f, Float::sum);
+    }
+
+    public int countTotalCheckedOutCarts() {
+        return totalCartsCheckedout;
     }
 }
