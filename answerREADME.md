@@ -1,6 +1,6 @@
 
 DEL 2
-    Oppgave 3:
+Oppgave 3:
 
     For å sette opp en egen fork med banch protection med følgende krav:
     
@@ -25,8 +25,8 @@ DEL 2
 
 
 DEL 3
-    Oppgave 1:
-    
+Oppgave 1:
+
     I første omgang måtte jeg legge til to GitHub secrets. Det er fordi docker.yml forsøkte å hente disse ut, men da det ikke var noen der kræsjet de. Jeg måtte da legge secretsene til under de titlene/secretsene
     som dockerfilen spurte etter. Først måtte jeg legge til brukernavnet under DOCKER_HUB_USERNAME og så en token under DOCKER_HUB_TOKEN og filen fikk da tilgang til dockerhub.
     
@@ -57,3 +57,6 @@ DEL 3
             Her kan sensor selv velge tagnavn og ECR repo navn, men mine er shopifly og 1058.
 
 
+Del 5:
+Oppgave 1:
+    

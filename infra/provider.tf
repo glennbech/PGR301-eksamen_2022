@@ -6,4 +6,9 @@ terraform {
     }
   }
 
+  backend "s3" {
+    bucket = "analytics-1058"
+    key    = "superfly/terraform.state"
+    region = "eu-west-1"
+  }
 }
