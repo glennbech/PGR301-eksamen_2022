@@ -1,11 +1,11 @@
 package no.shoppifly;
 
+import io.micrometer.core.annotation.Timed;
 import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,21 +13,24 @@ import java.util.List;
 @RestController()
 public class ShoppingCartController implements ApplicationListener<ApplicationReadyEvent> {
 
-    @Autowired
     private final CartService cartService;
-    private NaiveCartImpl naiveCartImpl;
-    private MeterRegistry meterRegistry;
+    private final NaiveCartImpl naiveCartImpl;
+    private final MeterRegistry meterRegistry;
 
 
-    public int totalCheckouts = 0;
+    public int totalCheckouts = 1;
 
     @Autowired
-    public ShoppingCartController(CartService cartService) {
+    public ShoppingCartController(CartService cartService, MeterRegistry meterRegistry, NaiveCartImpl naiveCartImpl) {
         this.cartService = cartService;
+        this.meterRegistry = meterRegistry;
+        this.naiveCartImpl = naiveCartImpl;
     }
 
+    @Timed
     @GetMapping(path = "/cart/{id}")
     public Cart getCart(@PathVariable String id) {
+        meterRegistry.counter("carts").increment();
         return cartService.getCart(id);
     }
 
@@ -37,15 +40,9 @@ public class ShoppingCartController implements ApplicationListener<ApplicationRe
      * @return an order ID
      */
 
-    @GetMapping(path = "/status")
-    public ResponseEntity<String> status() {
-        return ResponseEntity.ok("200 OK: Server is running");
-    }
-
     @PostMapping(path = "/cart/checkout")
     public String checkout(@RequestBody Cart cart) {
-        System.out.println("Number of checkouts: ");
-        System.out.println(totalCheckouts);
+        System.out.println("Total ChefckOuts: " + totalCheckouts);
         return cartService.checkout(cart);
     }
 
